@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jimmycmhsieh0801-cloud.github.io/tw-water-heater-calc/sitemap.xml

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>儲熱式電熱水器 vs 瓦斯熱水器耗費計算機｜一個月多花多少錢</title>
+  <meta name="description" content="租屋或裝潢必算！輸入洗澡人數、水溫升幅與每度電價，實算儲熱式電熱水器 24 小時保溫耗電與瞬熱式/瓦斯熱水器的每月費用差距。" />
+  <meta name="keywords" content="儲熱式電熱水器電費,電熱水器vs瓦斯熱水器,電熱水器耗電量計算,定時器省電" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "儲熱式電熱水器 vs 瓦斯熱水器耗費計算機｜一個月多花多少錢",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "TWD" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "儲熱式電熱水器不關電源一天耗幾度電？", "acceptedAnswer": {"@type": "Answer", "text": "視桶身保溫與室溫而定，24小時維持待機保溫每天約額外消耗 1.2～2 度電；建議洗澡前一小時再開啟或加裝定時器。"}}]}
+  </script>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --accent: #ea580c;
+      --accent-bg: #fff7ed;
+      --good: #059669;
+      --warn: #d97706;
+      --danger: #dc2626;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 20px 16px 48px; }
+    header { text-align: center; margin-bottom: 24px; }
+    header h1 { font-size: 1.6rem; margin: 0 0 8px; }
+    header p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+    .badge {
+      display: inline-block; background: #e0f2fe; color: var(--primary-dark);
+      font-size: 0.78rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; margin-bottom: 8px;
+    }
+    .tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+    .tab-btn {
+      padding: 12px; border: 1px solid var(--border); background: var(--card);
+      border-radius: 10px; font-size: 0.98rem; font-weight: 600; cursor: pointer; color: var(--muted);
+    }
+    .tab-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+      padding: 20px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 680px) { .grid-2 { grid-template-columns: 1fr; } }
+    label { display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 6px; }
+    input[type="number"], select {
+      width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; background: #fff;
+    }
+    .pill-group, .preset-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .pill, .chip {
+      padding: 7px 12px; border: 1px solid var(--border); background: #f8fafc;
+      border-radius: 8px; font-size: 0.86rem; font-weight: 600; cursor: pointer;
+    }
+    .pill.active { background: #e0f2fe; border-color: var(--primary); color: var(--primary-dark); }
+    .chip { border-radius: 999px; font-weight: 500; }
+    .chip:hover { border-color: var(--primary); color: var(--primary-dark); }
+    .result-box { margin-top: 18px; padding: 16px; border-radius: 12px; background: #f1f5f9; }
+    .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+    .metric { background: #fff; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border); }
+    .metric .label { font-size: 0.8rem; color: var(--muted); }
+    .metric .value { font-size: 1.3rem; font-weight: 700; margin-top: 2px; }
+    .metric .value.highlight { color: var(--primary-dark); }
+    .metric .value.good { color: var(--good); }
+    .metric .value.warn { color: var(--warn); }
+    .metric .value.danger { color: var(--danger); }
+    .gear-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+    .gear-card {
+      border: 1px solid var(--border); border-radius: 12px; padding: 14px;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .gear-tag {
+      display: inline-block; font-size: 0.75rem; font-weight: 700; color: var(--accent);
+      background: var(--accent-bg); padding: 2px 8px; border-radius: 6px; margin-bottom: 6px;
+    }
+    .gear-card h3 { font-size: 1rem; margin: 0 0 6px; }
+    .gear-card p { font-size: 0.85rem; color: var(--muted); margin: 0 0 12px; }
+    .cta-btn {
+      display: block; text-align: center; padding: 9px 12px; border-radius: 8px;
+      background: var(--accent); color: #fff; text-decoration: none; font-weight: 700; font-size: 0.9rem;
+    }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.88rem; }
+    th, td { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; }
+    th { color: var(--muted); font-weight: 600; }
+    .seo-section h2 { font-size: 1.15rem; margin: 0 0 10px; }
+    .seo-section h3 { font-size: 1rem; margin: 18px 0 6px; color: var(--primary-dark); }
+    .seo-section p, .seo-section li { font-size: 0.92rem; color: #334155; }
+    .hidden { display: none; }
+    footer { text-align: center; font-size: 0.8rem; color: var(--muted); margin-top: 28px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">熱水能耗實算 × 租屋省電必看</div>
+      <h1>儲熱式電熱水器 vs 瓦斯熱水器耗費試算</h1>
+      <p>實算每天洗澡耗費度數與待機保溫損失，看看加裝定時器或省水蓮蓬頭能省多少錢</p>
+    </header>
+
+    
+        <section class="card">
+          <div class="grid-2">
+            <div><label for="peopleInput">每日洗澡人數（每人約用熱水 40L）</label><input type="number" id="peopleInput" value="2" min="1" max="10" /></div>
+            <div><label for="elecRateInput">每度電價（元/度，租屋常為 5 元）</label><input type="number" id="elecRateInput" value="4.5" min="1" max="15" step="0.1" /></div>
+          </div>
+          <div class="grid-2" style="margin-top:12px;">
+            <div><label for="tempRiseInput">水溫升幅（°C，冬季約 22°C、夏季約 12°C）</label><input type="number" id="tempRiseInput" value="20" min="5" max="40" /></div>
+            <div><label for="standbyInput">儲熱桶 24h 保溫損失（度/天，未加定時器約 1.5 度）</label><input type="number" id="standbyInput" value="1.5" min="0" max="5" step="0.1" /></div>
+          </div>
+          <div class="result-box">
+            <div class="result-grid">
+              <div class="metric"><div class="label">電熱水器每月總度數</div><div class="value" id="whKwhEl">--</div></div>
+              <div class="metric"><div class="label">電熱水器每月電費</div><div class="value warn" id="whCostEl">--</div></div>
+              <div class="metric"><div class="label">若改天然氣預估月費</div><div class="value good" id="gasCostEl">--</div></div>
+            </div>
+          </div>
+        </section>
+
+    <section class="card">
+      <h2 style="font-size: 1.15rem; margin: 0 0 6px;">衛浴節能省水省電裝備推薦</h2>
+      <p style="margin: 0 0 14px; color: var(--muted); font-size: 0.88rem;">減少熱水流量與待機保溫時間，直接替電費與瓦斯費打對折（含合作推廣連結）</p>
+      <div class="gear-grid" id="gearGrid"></div>
+    </section>
+
+    <article class="card seo-section">
+      
+          <h2>為什麼儲熱式電熱水器會這麼耗電？</h2>
+          <p>儲熱式電熱水器若 24 小時通電，就算沒人洗澡，熱水桶每小時仍會散熱並反覆重新加熱（每天待機損失約 1～2 度電）。若搭配<strong>定時器或增壓省水蓮蓬頭</strong>，每月常能省下 25%～40% 的熱水電費。</p>
+    </article>
+
+    <footer>
+      <p>註：計算依據水比熱公式 4.186 J/g°C 換算電能度數，實際費用依水壓、管線長度與環境室溫略有差異。 | <a href="https://jimmycmhsieh0801-cloud.github.io/">更多實用工具總目錄</a></p>
+    </footer>
+  </div>
+
+  <script src="affiliate_config.js"></script>
+  <script src="app.js"></script>
+  <script>
+    if (typeof AFFILIATE_GEARS !== "undefined") {
+      const grid = document.getElementById("gearGrid");
+      if (grid && !grid.innerHTML.trim()) {
+        grid.innerHTML = AFFILIATE_GEARS.map(
+          (g) => `
+          <div class="gear-card">
+            <div>
+              <span class="gear-tag">${g.tag}</span>
+              <h3>${g.title}</h3>
+              <p>${g.desc}</p>
+            </div>
+            <a class="cta-btn" href="${g.url}" target="_blank" rel="noopener noreferrer nofollow">${g.cta} →</a>
+          </div>`
+        ).join("");
+      }
+    }
+  </script>
+</body>
+</html>
