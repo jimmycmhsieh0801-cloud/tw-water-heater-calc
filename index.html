@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
 <head>
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-MX4TNZZ4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    document.addEventListener('click', function(e) {
+      var a = e.target.closest('a.cta-btn, a.btn, a.lead-cta');
+      if (a) {
+        window.dataLayer.push({
+          event: 'outbound_monetize_click',
+          link_url: a.href,
+          link_text: (a.textContent || '').trim()
+        });
+      }
+    });
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>儲熱式電熱水器 vs 瓦斯熱水器耗費計算機｜一個月多花多少錢</title>
