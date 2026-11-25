@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
 <head>
-  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-MX4TNZZ4"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-71C7MD759Q"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    gtag('config', 'G-71C7MD759Q');
     document.addEventListener('click', function(e) {
       var a = e.target.closest('a.cta-btn, a.btn, a.lead-cta');
       if (a) {
-        window.dataLayer.push({
-          event: 'outbound_monetize_click',
+        gtag('event', 'outbound_monetize_click', {
           link_url: a.href,
           link_text: (a.textContent || '').trim()
         });
